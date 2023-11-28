@@ -1,0 +1,19 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/settings
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
+
+background:
+  image: https://windows10spotlight.com/wp-content/uploads/2023/02/bd21bd6d93a06fd421f55e168f3db3ad.jpg
+  brightness: 50
+
+cardBlur: sm
+
+headerStyle: clean
+
+# iconStyle: theme
+
+title: dashboard

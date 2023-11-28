@@ -1,0 +1,77 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/services
+
+- Download Clients:
+    - SABnzbd:
+        icon: sabnzbd.svg
+        href: http://localhost:8090
+        ping: http://192.168.254.22:8090
+        server: my-docker
+        container: sabnzbd
+        description: Usenet
+        widget:
+            type: sabnzbd
+            url: http://192.168.254.22:8090
+            key: 47f1364a24e645c89ae1e56b1998ae6c
+    - qBittorrent:
+        icon: qbittorrent.svg
+        href: http://localhost:8080
+        ping: http://192.168.254.22:8080
+        server: my-docker
+        container: qbittorrent
+        description: Torrents
+        widget:
+            type: qbittorrent
+            url: http://192.168.254.22:8080
+            username: admin
+            password: adminadmin
+
+- Media Management:
+    - Radarr:
+        icon: radarr.svg
+        href: http://localhost:7878
+        ping: http://192.168.254.22:7878
+        server: my-docker
+        container: radarr
+        description: Movies
+        widget:
+            type: radarr
+            url: http://192.168.254.22:7878
+            key: 9c966d18d5f64a4ba602c7c17e46a770
+            enableQueue: true # optional, defaults to false
+    - Sonarr:
+        icon: sonarr.svg
+        href: http://localhost:8989
+        ping: http://192.168.254.22:8989
+        server: my-docker
+        container: sonarr
+        description: Series
+        widget:
+            type: sonarr
+            url: http://192.168.254.22:8989
+            key: c1a5fc86165e4260ac60282aba3c523a
+            enableQueue: false # optional, defaults to false
+    - Prowlarr:
+        icon: prowlarr.svg
+        href: http://localhost:9696
+        ping: http://192.168.254.22:9696
+        sever: my-docker
+        container: prowlarr
+        description: Indexers
+        widget:
+            type: prowlarr
+            url: http://192.168.254.22:9696
+            key: bbddd4fe49f54a4da33b6586fc500ba3
+
+- Media Server:
+    - Plex:
+        icon: plex.svg
+        href: http://192.168.254.22:32400
+        ping: http://192.168.254.22:32400
+        server: my-docker
+        container: plex
+        widget:
+            type: plex
+            url: http://192.168.254.22:32400
+            key: GkYsmjTCCdu8S2xV--bF

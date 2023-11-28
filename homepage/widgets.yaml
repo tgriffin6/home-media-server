@@ -1,0 +1,23 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/widgets
+
+- resources:
+    cpu: false
+    disk: /d
+    memory: false
+    uptime: false
+    refresh: 3000
+
+- search:
+    provider: google
+    focus: true
+    target: _blank
+
+- openmeteo:
+    label: Seattle # optional
+    latitude: 47.6062
+    longitude: -122.3321
+    timezone: America/Vancouver # optional
+    units: imperial # or imperial
+    cache: 5 # Time in minutes to cache API responses, to stay within limits

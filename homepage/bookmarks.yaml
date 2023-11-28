@@ -1,0 +1,42 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/bookmarks
+
+- Tools and Resources:
+    - Github:
+        - icon: github-light.png
+          href: https://github.com/
+    - Router:
+        - icon: arris-light.png
+          href: http://192.168.254.254/
+    - Eweka:
+        - icon: eweka.png
+          href: http://eweka.nl/
+    - nzbgeek:
+        - icon: https://asset.brandfetch.io/idSdh8eCdF/idiHpleBzZ.png
+          href: https://nzbgeek.info/
+    - Homepage Documentation:
+        - icon: homepage.png
+          href: https://gethomepage.dev/v0.7.0/
+
+- Social:
+    - Reddit:
+        - icon: reddit.svg
+          href: https://reddit.com/
+    - Instagram:
+        - icon: instagram.svg
+          href: https://instagram.com/
+    - Letterboxd:
+        - icon: https://a.ltrbxd.com/logos/letterboxd-decal-dots-pos-rgb.svg
+          href: https://letterboxd.com/
+    - Linkedin:
+        - icon: linkedin.svg
+          href: https://linkedin.com/
+
+- Entertainment:
+    - YouTube:
+        - icon: youtube.svg
+          href: https://youtube.com/
+    - Twitch:
+        - icon: twitch.svg
+          href: https://twitch.tv/

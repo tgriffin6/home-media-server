@@ -1,0 +1,116 @@
+services:
+  wireguard:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Vancouver
+    volumes:
+      - /home/austin/ms/wireguard:/config
+      - /lib/modules:/lib/modules
+    ports:
+      - 8080:8080
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    network_mode: service:wireguard
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Vancouver
+      - WEBUI_PORT=8080
+    volumes:
+      - /mnt/d/data/torrents:/data/torrents
+    restart: unless-stopped
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Vancouver
+    volumes:
+      - /home/austin/ms/sabnzbd:/config
+      - /mnt/d/data/usenet:/data/usenet/
+    ports:
+      - 8090:8080
+    restart: unless-stopped
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Vancouver
+    volumes:
+      - /home/austin/ms/radarr:/config
+      - /mnt/d/data:/data
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Vancouver
+    volumes:
+      - /home/austin/ms/sonarr:/config
+      - /mnt/d/data:/data
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Vancouver
+    volumes:
+      - /home/austin/ms/prowlarr:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    # runtime: nvidia
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Vancouver
+      - VERSION=docker
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /home/austin/ms/plex:/config
+      - /mnt/d/data/media:/data/media
+    ports:
+      - "32400:32400/tcp"   # Plex Media Server port
+      - "3005:3005/tcp"     # Plex DLNA Server port
+      - "8324:8324/tcp"     # Plex GDM discovery port
+      - "32469:32469/tcp"   # Plex DLNA discovery port
+      - "1900:1900/udp"     # Plex DLNA discovery port (UDP)
+      - "32410:32410/udp"   # Plex Media Server (PMS) port (UDP)
+      - "32412:32412/udp"   # Plex DLNA Server port (UDP)
+      - "32413:32413/udp"   # Plex DLNA Server port (UDP)
+      - "32414:32414/udp"   # Plex DLNA Server port (UDP)
+    restart: unless-stopped
+  homepage:
+    image: ghcr.io/benphelps/homepage:latest
+    container_name: homepage
+    ports:
+      - 3000:3000
+    volumes:
+      - /home/austin/ms/homepage:/config # Make sure your local config directory exists
+      - /var/run/docker.sock:/var/run/docker.sock # Pass local proxy
+      - /mnt/d/:/d
+    restart: unless-stopped
